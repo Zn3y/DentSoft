@@ -5,7 +5,7 @@ const db = require('./config/database');
 const pacientesRoutes = require('./routes/pacientesRoutes');
 const citasRoutes = require('./routes/citasRoutes');
 const usuariosRoutes = require('./routes/usuariosRoutes');
-const dashboardRoutes = require('./routes/dashboardRoutes'); // 👈 ESTA LÍNEA
+const dashboardRoutes = require('./routes/dashboardRoutes');
 
 const app = express();
 const PORT = 3000;

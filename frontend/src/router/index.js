@@ -5,6 +5,7 @@ import Layout from '../views/Layout.vue'
 import Dashboard from '../views/Dashboard.vue'
 import Pacientes from '../views/Pacientes.vue'
 import Citas from '../views/Citas.vue'
+import Admin from '../views/Usuarios.vue'
 
 const routes = [
   {
@@ -17,8 +18,9 @@ const routes = [
     meta: { requiresAuth: true },
     children: [
       { path: '', component: Dashboard },
-      { path: 'pacientes', component: Pacientes },
-      { path: 'citas', component: Citas }
+      { path: 'pacientes', component: Pacientes, meta: { requiresAuth: true, requiresStaff: true } },
+      { path: 'citas', component: Citas, meta: { requiresAuth: true, requiresStaff: true } },
+      { path: 'usuarios', component: Admin, meta: { requiresAuth: true, requiresAdmin: true } }
     ]
   }
 ]
@@ -30,8 +32,16 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token')
-  if (to.meta.requiresAuth && !token) next('/login')
-  else next()
+  if (to.meta.requiresAuth && !token) return next('/login')
+
+  if (token) {
+    const payload = JSON.parse(atob(token.split('.')[1]))
+
+    if (to.meta.requiresAdmin && payload.rol !== 'admin') return next('/')
+    if (to.meta.requiresStaff && !['doctor', 'asistente'].includes(payload.rol)) return next('/')
+  }
+
+  next()
 })
 
 export default router

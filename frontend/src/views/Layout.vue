@@ -5,16 +5,30 @@
       <h2 class="text-2xl font-bold mb-8">CRM Odontológico</h2>
 
       <p class="mt-6 text-white font-semibold">
-        {{ usuario.nombre }} - {{ usuario.rol }}
+        {{ usuario.nombre }} - Rol: {{ usuario.rol }}
       </p>
 
-      <nav class="space-y-4">
-        <router-link to="/" class="block hover:bg-blue-700 p-2 rounded">Inicio</router-link>
-        <router-link to="/pacientes" class="block hover:bg-blue-700 p-2 rounded">Pacientes</router-link>
-        <router-link to="/citas" class="block hover:bg-blue-700 p-2 rounded">Agendar Citas</router-link>
+      <nav class="space-y-2 mt-4">
+        <router-link to="/" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
+          <HomeIcon class="w-5 h-5" /> Inicio
+        </router-link>
+
+        <!-- Solo admin -->
+        <router-link v-if="usuario.rol === 'admin'" to="/usuarios" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
+          <UsersIcon class="w-5 h-5" /> Usuarios
+        </router-link>
+
+        <!-- Solo doctor y asistente -->
+        <router-link v-if="['doctor', 'asistente'].includes(usuario.rol)" to="/pacientes" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
+          <UserGroupIcon class="w-5 h-5" /> Pacientes
+        </router-link>
+
+        <router-link v-if="['doctor', 'asistente'].includes(usuario.rol)" to="/citas" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
+          <CalendarIcon class="w-5 h-5" /> Agendar Citas
+        </router-link>
       </nav>
 
-      <button @click="logout" class="bg-red-600 text-white px-3 py-1 rounded mt-4">
+      <button @click="logout" class="bg-red-600 text-white px-3 py-1 rounded mt-6">
         Logout
       </button>
     </aside>
@@ -29,6 +43,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { HomeIcon, UsersIcon, UserGroupIcon, CalendarIcon } from '@heroicons/vue/24/outline'
+
 
 const router = useRouter()
 const usuario = ref({ nombre: '', rol: '' })

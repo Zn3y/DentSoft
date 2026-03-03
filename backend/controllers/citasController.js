@@ -1,8 +1,12 @@
 const db = require('../config/database');
 
 exports.obtenerCitas = (req, res) => {
-    const sql = `SELECT citas.*, pacientes.nombre, pacientes.apellido
-                 FROM citas INNER JOIN pacientes ON citas.paciente_id = pacientes.id`;
+    const sql = `SELECT citas.*, 
+                 pacientes.nombre, pacientes.apellido,
+                 usuarios.nombre AS doctor_nombre
+                 FROM citas 
+                 INNER JOIN pacientes ON citas.paciente_id = pacientes.id
+                 INNER JOIN usuarios ON citas.doctor_id = usuarios.id`;
     db.query(sql, (err, results) => {
         if (err) return res.status(500).json(err);
         res.json(results);
@@ -10,11 +14,12 @@ exports.obtenerCitas = (req, res) => {
 };
 
 exports.crearCita = (req, res) => {
-    const { paciente_id, fecha, hora, motivo } = req.body;
-    if (!paciente_id || !fecha || !hora) return res.status(400).json({ error: 'Paciente, fecha y hora son obligatorios' });
+    const { paciente_id, fecha, hora, motivo, doctor_id } = req.body;
+    if (!paciente_id || !fecha || !hora || !doctor_id) 
+        return res.status(400).json({ error: 'Paciente, fecha, hora y doctor son obligatorios' });
 
-    const sql = 'INSERT INTO citas (paciente_id, fecha, hora, motivo) VALUES (?, ?, ?, ?)';
-    db.query(sql, [paciente_id, fecha, hora, motivo], (err, result) => {
+    const sql = 'INSERT INTO citas (paciente_id, fecha, hora, motivo, doctor_id) VALUES (?, ?, ?, ?, ?)';
+    db.query(sql, [paciente_id, fecha, hora, motivo, doctor_id], (err, result) => {
         if (err) return res.status(500).json(err);
         res.json({ mensaje: 'Cita creada', id: result.insertId });
     });

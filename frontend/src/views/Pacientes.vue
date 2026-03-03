@@ -95,12 +95,12 @@ onMounted(() => {
       </thead>
       <tbody>
         <tr v-for="paciente in pacientes" :key="paciente.id" class="border-t">
-          <td class="p-2">{{ paciente.id }}</td>
-          <td class="p-2">{{ paciente.nombre }}</td>
-          <td class="p-2">{{ paciente.apellido }}</td>
-          <td class="p-2">{{ paciente.telefono }}</td>
-          <td class="p-2">{{ paciente.email }}</td>
-          <td class="p-2 space-x-2">
+          <td class="p-2 text-center">{{ paciente.id }}</td>
+          <td class="p-2 text-center">{{ paciente.nombre }}</td>
+          <td class="p-2 text-center">{{ paciente.apellido }}</td>
+          <td class="p-2 text-center">{{ paciente.telefono }}</td>
+          <td class="p-2 text-center">{{ paciente.email }}</td>
+          <td class="p-2 text-center space-x-2">
             <button @click="cargarPacienteParaEditar(paciente)" class="bg-yellow-500 text-white px-2 py-1 rounded">Editar</button>
             <button @click="eliminarPaciente(paciente.id)" class="bg-red-600 text-white px-2 py-1 rounded">Eliminar</button>
           </td>
