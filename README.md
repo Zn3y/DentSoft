@@ -190,7 +190,6 @@ http://localhost:5173
 
 # 📌 Próximas Mejoras
 
-- Roles (Admin / Asistente / Doctor)
 - Historial clínico del paciente
 - Filtro por rango de fechas en dashboard
 - Deploy en VPS
