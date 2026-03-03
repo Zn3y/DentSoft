@@ -179,16 +179,6 @@ http://localhost:5173
 
 ---
 
-# 🧠 Problemas Técnicos Resueltos
-
-- ❌ Error 404 en rutas protegidas
-- ❌ Middleware mal importado
-- ❌ Token no enviado en headers
-- ❌ Scroll infinito en Chart.js
-- ❌ Re-render innecesario en Vue
-
----
-
 # 🛡️ Seguridad Implementada
 
 - Middleware de autenticación
