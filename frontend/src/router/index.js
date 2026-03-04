@@ -6,6 +6,7 @@ import Dashboard from '../views/Dashboard.vue'
 import Pacientes from '../views/Pacientes.vue'
 import Citas from '../views/Citas.vue'
 import Admin from '../views/Usuarios.vue'
+import Historial from '../views/Historial.vue'
 
 const routes = [
   {
@@ -20,7 +21,8 @@ const routes = [
       { path: '', component: Dashboard },
       { path: 'pacientes', component: Pacientes, meta: { requiresAuth: true, requiresStaff: true } },
       { path: 'citas', component: Citas, meta: { requiresAuth: true, requiresStaff: true } },
-      { path: 'usuarios', component: Admin, meta: { requiresAuth: true, requiresAdmin: true } }
+      { path: 'usuarios', component: Admin, meta: { requiresAuth: true, requiresAdmin: true } },
+      { path: 'historial/:id', component: Historial, meta: { requiresAuth: true, requiresStaff: true } }
     ]
   }
 ]
