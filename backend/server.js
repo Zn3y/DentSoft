@@ -6,6 +6,7 @@ const pacientesRoutes = require('./routes/pacientesRoutes');
 const citasRoutes = require('./routes/citasRoutes');
 const usuariosRoutes = require('./routes/usuariosRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
+const historialRoutes = require('./routes/historialRoutes');
 
 const app = express();
 const PORT = 3000;
@@ -20,7 +21,8 @@ app.get('/', (req, res) => {
 app.use('/pacientes', pacientesRoutes);
 app.use('/citas', citasRoutes);
 app.use('/usuarios', usuariosRoutes);
-app.use('/dashboard', dashboardRoutes); // 👈 Y ESTA
+app.use('/dashboard', dashboardRoutes); 
+app.use('/historial', historialRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
