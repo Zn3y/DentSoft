@@ -188,16 +188,6 @@ http://localhost:5173
 
 ---
 
-# 📌 Próximas Mejoras
-
-- Historial clínico del paciente
-- Filtro por rango de fechas en dashboard
-- Deploy en VPS
-- Implementación HTTPS
-- Refresh Token
-
----
-
 # 👨‍💻 Autor
 
 **Schneyder Garzón**  
