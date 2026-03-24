@@ -1,13 +1,216 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DentSoft - Sistema de Gestión Odontológica Profesional</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
-    <style>
+<template>
+     <!-- Navigation -->
+    <nav>
+        <div class="logo">🦷 DentSoft</div>
+        <ul class="nav-links">
+            <li><a href="#funciones">Funciones</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="/login" class="cta-nav">Ingresar</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>El <span class="highlight">CRM Odontológico</span> que transforma tu clínica</h1>
+            <p>Gestiona pacientes, citas, historiales médicos y facturación desde una plataforma intuitiva diseñada específicamente para odontólogos.</p>
+            <div class="hero-buttons">
+                <a href="#demo" class="btn-primary">Prueba Gratis 30 Días</a>
+                <a href="#funciones" class="btn-secondary">Ver Funciones</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-card">
+                <div class="card-header">
+                    <div class="card-icon">🦷</div>
+                    <div class="card-title">Panel de Control</div>
+                </div>
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">127</div>
+                        <div class="stat-label">Pacientes Activos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">18</div>
+                        <div class="stat-label">Citas Hoy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">94%</div>
+                        <div class="stat-label">Satisfacción</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$48K</div>
+                        <div class="stat-label">Facturación Mes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="funciones" class="features">
+        <div class="section-header">
+            <span class="section-badge">Funcionalidades</span>
+            <h2>Todo lo que necesitas en un solo lugar</h2>
+            <p>Optimiza cada aspecto de tu práctica dental con herramientas diseñadas para profesionales</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Agenda Inteligente</h3>
+                <p>Gestión avanzada de citas con recordatorios automáticos por SMS y email. Reduce ausencias hasta un 70%.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Historiales Digitales</h3>
+                <p>Expedientes clínicos completos con odontogramas interactivos, radiografías y notas de evolución.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Facturación Automática</h3>
+                <p>Genera facturas, controla pagos y maneja múltiples métodos de pago con reportes financieros detallados.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Reportes y Análisis</h3>
+                <p>Dashboards en tiempo real con métricas clave: pacientes, ingresos, tratamientos y rendimiento de la clínica.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Seguridad Total</h3>
+                <p>Encriptación de datos, respaldos automáticos y cumplimiento con normativas de protección de datos médicos.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Acceso Móvil</h3>
+                <p>Gestiona tu clínica desde cualquier dispositivo. App nativa para iOS y Android incluida.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="benefits">
+        <div class="benefits-content">
+            <div class="benefits-text">
+                <h2>¿Por qué elegir DentSoft?</h2>
+                <ul class="benefits-list">
+                    <li class="benefit-item">
+                        <div class="benefit-icon">⚡</div>
+                        <div class="benefit-text">
+                            <h4>Ahorra tiempo valioso</h4>
+                            <p>Automatiza tareas administrativas y dedica más tiempo a tus pacientes. Hasta 10 horas semanales recuperadas.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <div class="benefit-icon">💎</div>
+                        <div class="benefit-text">
+                            <h4>Mejora la experiencia del paciente</h4>
+                            <p>Comunicación fluida, recordatorios personalizados y atención más eficiente aumentan la satisfacción.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <div class="benefit-icon">📈</div>
+                        <div class="benefit-text">
+                            <h4>Incrementa tus ingresos</h4>
+                            <p>Reduce ausencias, optimiza tu agenda y mejora el seguimiento de tratamientos para aumentar facturación.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <div class="benefit-icon">🎯</div>
+                        <div class="benefit-text">
+                            <h4>Toma decisiones basadas en datos</h4>
+                            <p>Analítica avanzada te muestra métricas clave para mejorar continuamente tu práctica.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="benefits-visual">
+                <div class="metric-box">
+                    <span class="metric-number">87%</span>
+                    <span class="metric-label">Reducción en tiempo administrativo</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-number">+35%</span>
+                    <span class="metric-label">Aumento en ingresos promedio</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-number">5,000+</span>
+                    <span class="metric-label">Clínicas confían en nosotros</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-number">99.9%</span>
+                    <span class="metric-label">Uptime garantizado</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contacto" class="cta-section">
+        <div class="cta-content">
+            <h2>Transforma tu clínica hoy</h2>
+            <p>Únete a miles de odontólogos que ya optimizaron su práctica con DentSoft</p>
+            <form class="cta-form" onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.');">
+                <input type="email" class="cta-input" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="cta-button">Empezar Prueba Gratis</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>🦷 DentSoft</h3>
+                <p>La solución CRM más completa para clínicas odontológicas. Diseñada por dentistas, para dentistas.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Producto</h4>
+                <ul class="footer-links">
+                    <li><a href="#funciones">Funciones</a></li>
+                    <li><a href="#">Precios</a></li>
+                    <li><a href="#">Integraciones</a></li>
+                    <li><a href="#">API</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Casos de éxito</a></li>
+                    <li><a href="#">Soporte</a></li>
+                    <li><a href="#">Documentación</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Empresa</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Términos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 DentSoft. Todos los derechos reservados</p>
+        </div>
+    </footer>
+</template>
+
+<script>
+export default {
+  name: "Home",
+  methods: {
+    demo() {
+      alert("¡Gracias! Te contactaremos pronto.")
+    }
+  }
+}
+</script>
+
+<style>
         :root {
             --primary: #0A4D68;
             --primary-light: #05668D;
@@ -726,205 +929,3 @@
             }
         }
     </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">🦷 DentSoft</div>
-        <ul class="nav-links">
-            <li><a href="#funciones">Funciones</a></li>
-            <li><a href="#beneficios">Beneficios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-        <a href="#demo" class="cta-nav">Solicitar Demo</a>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>El <span class="highlight">CRM Odontológico</span> que transforma tu clínica</h1>
-            <p>Gestiona pacientes, citas, historiales médicos y facturación desde una plataforma intuitiva diseñada específicamente para odontólogos.</p>
-            <div class="hero-buttons">
-                <a href="#demo" class="btn-primary">Prueba Gratis 30 Días</a>
-                <a href="#funciones" class="btn-secondary">Ver Funciones</a>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="hero-card">
-                <div class="card-header">
-                    <div class="card-icon">🦷</div>
-                    <div class="card-title">Panel de Control</div>
-                </div>
-                <div class="card-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">127</div>
-                        <div class="stat-label">Pacientes Activos</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">18</div>
-                        <div class="stat-label">Citas Hoy</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">94%</div>
-                        <div class="stat-label">Satisfacción</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">$48K</div>
-                        <div class="stat-label">Facturación Mes</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="funciones" class="features">
-        <div class="section-header">
-            <span class="section-badge">Funcionalidades</span>
-            <h2>Todo lo que necesitas en un solo lugar</h2>
-            <p>Optimiza cada aspecto de tu práctica dental con herramientas diseñadas para profesionales</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📅</div>
-                <h3>Agenda Inteligente</h3>
-                <p>Gestión avanzada de citas con recordatorios automáticos por SMS y email. Reduce ausencias hasta un 70%.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📋</div>
-                <h3>Historiales Digitales</h3>
-                <p>Expedientes clínicos completos con odontogramas interactivos, radiografías y notas de evolución.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💰</div>
-                <h3>Facturación Automática</h3>
-                <p>Genera facturas, controla pagos y maneja múltiples métodos de pago con reportes financieros detallados.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Reportes y Análisis</h3>
-                <p>Dashboards en tiempo real con métricas clave: pacientes, ingresos, tratamientos y rendimiento de la clínica.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Seguridad Total</h3>
-                <p>Encriptación de datos, respaldos automáticos y cumplimiento con normativas de protección de datos médicos.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <h3>Acceso Móvil</h3>
-                <p>Gestiona tu clínica desde cualquier dispositivo. App nativa para iOS y Android incluida.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section id="beneficios" class="benefits">
-        <div class="benefits-content">
-            <div class="benefits-text">
-                <h2>¿Por qué elegir DentSoft?</h2>
-                <ul class="benefits-list">
-                    <li class="benefit-item">
-                        <div class="benefit-icon">⚡</div>
-                        <div class="benefit-text">
-                            <h4>Ahorra tiempo valioso</h4>
-                            <p>Automatiza tareas administrativas y dedica más tiempo a tus pacientes. Hasta 10 horas semanales recuperadas.</p>
-                        </div>
-                    </li>
-                    <li class="benefit-item">
-                        <div class="benefit-icon">💎</div>
-                        <div class="benefit-text">
-                            <h4>Mejora la experiencia del paciente</h4>
-                            <p>Comunicación fluida, recordatorios personalizados y atención más eficiente aumentan la satisfacción.</p>
-                        </div>
-                    </li>
-                    <li class="benefit-item">
-                        <div class="benefit-icon">📈</div>
-                        <div class="benefit-text">
-                            <h4>Incrementa tus ingresos</h4>
-                            <p>Reduce ausencias, optimiza tu agenda y mejora el seguimiento de tratamientos para aumentar facturación.</p>
-                        </div>
-                    </li>
-                    <li class="benefit-item">
-                        <div class="benefit-icon">🎯</div>
-                        <div class="benefit-text">
-                            <h4>Toma decisiones basadas en datos</h4>
-                            <p>Analítica avanzada te muestra métricas clave para mejorar continuamente tu práctica.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="benefits-visual">
-                <div class="metric-box">
-                    <span class="metric-number">87%</span>
-                    <span class="metric-label">Reducción en tiempo administrativo</span>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-number">+35%</span>
-                    <span class="metric-label">Aumento en ingresos promedio</span>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-number">5,000+</span>
-                    <span class="metric-label">Clínicas confían en nosotros</span>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-number">99.9%</span>
-                    <span class="metric-label">Uptime garantizado</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="contacto" class="cta-section">
-        <div class="cta-content">
-            <h2>Transforma tu clínica hoy</h2>
-            <p>Únete a miles de odontólogos que ya optimizaron su práctica con DentSoft</p>
-            <form class="cta-form" onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.');">
-                <input type="email" class="cta-input" placeholder="Tu correo electrónico" required>
-                <button type="submit" class="cta-button">Empezar Prueba Gratis</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>🦷 DentSoft</h3>
-                <p>La solución CRM más completa para clínicas odontológicas. Diseñada por dentistas, para dentistas.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Producto</h4>
-                <ul class="footer-links">
-                    <li><a href="#funciones">Funciones</a></li>
-                    <li><a href="#">Precios</a></li>
-                    <li><a href="#">Integraciones</a></li>
-                    <li><a href="#">API</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Recursos</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Casos de éxito</a></li>
-                    <li><a href="#">Soporte</a></li>
-                    <li><a href="#">Documentación</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Empresa</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Nosotros</a></li>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="#">Privacidad</a></li>
-                    <li><a href="#">Términos</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 DentSoft. Todos los derechos reservados</p>
-        </div>
-    </footer>
-</body>
-</html>
