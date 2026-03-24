@@ -9,9 +9,11 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 const historialRoutes = require('./routes/historialRoutes');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // ← fix crítico
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*'
+}));
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -25,5 +27,5 @@ app.use('/dashboard', dashboardRoutes);
 app.use('/historial', historialRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en puerto ${PORT}`);
 });
