@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 3000; // ← fix crítico
 app.use(cors({
   origin: process.env.FRONTEND_URL || '*'
 }));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {

@@ -10,10 +10,11 @@ const mensaje = ref('')
 const error = ref('')
 const modoEdicion = ref(false)
 const usuarioEditandoId = ref(null)
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 const obtenerUsuarios = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch('http://localhost:3000/usuarios/todos', {
+  const res = await fetch('${API_URL}/usuarios/todos', {
     headers: { 'Authorization': 'Bearer ' + token }
   })
   usuarios.value = await res.json()
@@ -34,7 +35,7 @@ const guardarUsuario = async () => {
     const body = { nombre: nombre.value, email: email.value, rol: rol.value }
     if (password.value) body.password = password.value
 
-    const res = await fetch(`http://localhost:3000/usuarios/${usuarioEditandoId.value}`, {
+    const res = await fetch(`${API_URL}/usuarios/${usuarioEditandoId.value}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
       body: JSON.stringify(body)
@@ -48,7 +49,7 @@ const guardarUsuario = async () => {
       error.value = data.error || 'Error al actualizar usuario'
     }
   } else {
-    const res = await fetch('http://localhost:3000/usuarios/register', {
+    const res = await fetch('${API_URL}/usuarios/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
       body: JSON.stringify({ nombre: nombre.value, email: email.value, password: password.value, rol: rol.value })
@@ -88,7 +89,7 @@ const cancelarEdicion = () => {
 const eliminarUsuario = async (id) => {
   if (!confirm('¿Seguro que deseas eliminar este usuario?')) return
   const token = localStorage.getItem('token')
-  await fetch(`http://localhost:3000/usuarios/${id}`, {
+  await fetch(`${API_URL}/usuarios/${id}`, {
     method: 'DELETE',
     headers: { 'Authorization': 'Bearer ' + token }
   })

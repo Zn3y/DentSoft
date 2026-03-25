@@ -69,11 +69,13 @@ const chartOptions = {
 // =============================
 // PETICIONES
 // =============================
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 const obtenerEstadisticas = async () => {
   try {
     const token = localStorage.getItem('token')
 
-    const res = await fetch('http://localhost:3000/dashboard', {
+    const res = await fetch('${API_URL}/dashboard', {
       headers: { Authorization: 'Bearer ' + token }
     })
 
@@ -91,7 +93,7 @@ const obtenerGraficos = async () => {
   try {
     const token = localStorage.getItem('token')
 
-    const res = await fetch('http://localhost:3000/dashboard/graficos', {
+    const res = await fetch('${API_URL}/dashboard/graficos', {
       headers: { Authorization: 'Bearer ' + token }
     })
 

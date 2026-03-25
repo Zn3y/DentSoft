@@ -25,9 +25,11 @@ const pacientesFiltrados = computed(() => {
   )
 })
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 const obtenerPacientes = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch('http://localhost:3000/pacientes', {
+  const res = await fetch('${API_URL}/pacientes', {
     headers: { 'Authorization': 'Bearer ' + token }
   })
   pacientes.value = await res.json()
@@ -36,8 +38,8 @@ const obtenerPacientes = async () => {
 const guardarPaciente = async () => {
   const token = localStorage.getItem('token')
   const url = modoEdicion.value
-    ? `http://localhost:3000/pacientes/${pacienteEditandoId.value}`
-    : 'http://localhost:3000/pacientes'
+    ? `${API_URL}/pacientes/${pacienteEditandoId.value}`
+    : '${API_URL}/pacientes'
 
   await fetch(url, {
     method: modoEdicion.value ? 'PUT' : 'POST',
@@ -87,7 +89,7 @@ const cancelarEdicion = () => {
 const eliminarPaciente = async (id) => {
   if (!confirm('¿Seguro que deseas eliminar este paciente?')) return
   const token = localStorage.getItem('token')
-  await fetch(`http://localhost:3000/pacientes/${id}`, {
+  await fetch(`${API_URL}/pacientes/${id}`, {
     method: 'DELETE',
     headers: { 'Authorization': 'Bearer ' + token }
   })

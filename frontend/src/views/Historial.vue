@@ -50,9 +50,11 @@ const parsearOdontograma = (odontograma) => {
   return odontograma
 }
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 const obtenerPaciente = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch(`http://localhost:3000/pacientes`, {
+  const res = await fetch(`${API_URL}/pacientes`, {
     headers: { 'Authorization': 'Bearer ' + token }
   })
   const todos = await res.json()
@@ -61,7 +63,7 @@ const obtenerPaciente = async () => {
 
 const obtenerHistorial = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch(`http://localhost:3000/historial/${pacienteId}`, {
+  const res = await fetch(`${API_URL}/historial/${pacienteId}`, {
     headers: { 'Authorization': 'Bearer ' + token }
   })
   historial.value = await res.json()
@@ -69,7 +71,7 @@ const obtenerHistorial = async () => {
 
 const obtenerDoctores = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch('http://localhost:3000/usuarios/doctores', {
+  const res = await fetch('${API_URL}/usuarios/doctores', {
     headers: { 'Authorization': 'Bearer ' + token }
   })
   doctores.value = await res.json()

@@ -12,9 +12,11 @@ const motivo = ref('')
 const doctores = ref([])
 const doctor_id = ref('')
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 const obtenerDoctores = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch('http://localhost:3000/usuarios/doctores', {
+  const res = await fetch('${API_URL}/usuarios/doctores', {
     headers: { 'Authorization': 'Bearer ' + token }
   })
   doctores.value = await res.json()
@@ -22,7 +24,7 @@ const obtenerDoctores = async () => {
 
 const obtenerCitas = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch('http://localhost:3000/citas', {
+  const res = await fetch('${API_URL}/citas', {
     headers: { 'Authorization': 'Bearer ' + token }
   })
   citas.value = await res.json()
@@ -30,7 +32,7 @@ const obtenerCitas = async () => {
 
 const obtenerPacientes = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch('http://localhost:3000/pacientes', {
+  const res = await fetch('${API_URL}/pacientes', {
     headers: { 'Authorization': 'Bearer ' + token }
   })
   pacientes.value = await res.json()
@@ -38,7 +40,7 @@ const obtenerPacientes = async () => {
 
 const crearCita = async () => {
   const token = localStorage.getItem('token')
-  await fetch('http://localhost:3000/citas', {
+  await fetch('${API_URL}/citas', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
     body: JSON.stringify({ paciente_id: paciente_id.value, fecha: fecha.value, hora: hora.value, motivo: motivo.value, doctor_id: doctor_id.value })
