@@ -210,7 +210,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped> 
         :root {
             --primary: #0A4D68;
             --primary-light: #05668D;
