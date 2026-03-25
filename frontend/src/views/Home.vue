@@ -125,7 +125,6 @@ export default {
       ],
       footerLinks: [
         { title: 'Producto', links: ['Funciones', 'Precios', 'Integraciones', 'API'] },
-        { title: 'Recursos', links: ['Blog', 'Casos de éxito', 'Soporte', 'Docs'] },
         { title: 'Empresa', links: ['Nosotros', 'Contacto', 'Privacidad', 'Términos'] }
       ]
     }
