@@ -2,7 +2,7 @@
   <div class="flex min-h-screen w-full bg-gray-100 overflow-hidden">
     <!-- Sidebar -->
     <aside class="w-64 bg-blue-900 text-white p-5 flex flex-col">
-      <h2 class="text-2xl font-bold mb-8">CRM Odontológico</h2>
+      <h2 class="text-2xl font-bold mb-8">🦷 DentSoft</h2>
 
       <p class="mt-6 text-white font-semibold">
         {{ usuario.nombre }} - Rol: {{ usuario.rol }}
