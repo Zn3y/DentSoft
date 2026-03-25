@@ -7,7 +7,6 @@ const email = ref('')
 const password = ref('')
 
 const login = async () => {
-  // 1. Usamos la variable de entorno de Vite (o el fallback a localhost)
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
   try {
@@ -21,9 +20,9 @@ const login = async () => {
 
     if (res.ok) {
       localStorage.setItem('token', data.token);
-      router.push('/');
+      router.push('/app'); 
+      
     } else {
-      // Es mejor mostrar el error que viene del servidor
       alert(data.message || data.error || 'Error en el login');
     }
   } catch (error) {
@@ -31,7 +30,6 @@ const login = async () => {
     alert('No se pudo conectar con el servidor. Revisa tu conexión.');
   }
 };
-
 </script>
 
 <template>
