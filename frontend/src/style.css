@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Esto elimina cualquier espacio extra del navegador */
-html, body, #app {
+/* Reset total para eliminar bordes blancos */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100%;
+  width: 100%;
+}
+
+#app {
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
 }
