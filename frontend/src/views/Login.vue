@@ -7,21 +7,31 @@ const email = ref('')
 const password = ref('')
 
 const login = async () => {
-  const res = await fetch('http://localhost:3000/usuarios/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: email.value, password: password.value })
-  })
+  // 1. Usamos la variable de entorno de Vite (o el fallback a localhost)
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
-  const data = await res.json()
+  try {
+    const res = await fetch(`${API_URL}/usuarios/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email.value, password: password.value })
+    });
 
-  if (res.ok) {
-    localStorage.setItem('token', data.token)
-    router.push('/')
-  } else {
-    alert(data.error)
+    const data = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem('token', data.token);
+      router.push('/');
+    } else {
+      // Es mejor mostrar el error que viene del servidor
+      alert(data.message || data.error || 'Error en el login');
+    }
+  } catch (error) {
+    console.error('Error de red:', error);
+    alert('No se pudo conectar con el servidor. Revisa tu conexión.');
   }
-}
+};
+
 </script>
 
 <template>
