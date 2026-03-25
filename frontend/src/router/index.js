@@ -11,10 +11,6 @@ import Historial from '../views/Historial.vue'
 
 const routes = [
   {
-    path: '/',
-    component: Home
-  },
-  {
     path: '/login',
     component: Login
   },

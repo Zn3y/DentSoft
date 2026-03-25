@@ -11,8 +11,8 @@ const motivo = ref('')
 
 const doctores = ref([])
 const doctor_id = ref('')
-
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 
 const obtenerDoctores = async () => {
   const token = localStorage.getItem('token')
