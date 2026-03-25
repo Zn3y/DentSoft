@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen bg-gray-100">
     <!-- Sidebar -->
-    <aside class="w-64 bg-blue-900 text-white p-5">
+    <aside class="w-64 bg-blue-900 text-white p-5 min-h-screen flex flex-col">
       <h2 class="text-2xl font-bold mb-8">CRM Odontológico</h2>
 
       <p class="mt-6 text-white font-semibold">
@@ -9,21 +9,21 @@
       </p>
 
       <nav class="space-y-2 mt-4">
-        <router-link to="/" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
+        <router-link to="/app" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
           <HomeIcon class="w-5 h-5" /> Inicio
         </router-link>
 
         <!-- Solo admin -->
-        <router-link v-if="usuario.rol === 'admin'" to="/usuarios" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
+        <router-link v-if="usuario.rol === 'admin'" to="/app/usuarios" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
           <UsersIcon class="w-5 h-5" /> Usuarios
         </router-link>
 
         <!-- Solo doctor y asistente -->
-        <router-link v-if="['doctor', 'asistente'].includes(usuario.rol)" to="/pacientes" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
+        <router-link v-if="['doctor', 'asistente'].includes(usuario.rol)" to="/app//pacientes" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
           <UserGroupIcon class="w-5 h-5" /> Pacientes
         </router-link>
 
-        <router-link v-if="['doctor', 'asistente'].includes(usuario.rol)" to="/citas" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
+        <router-link v-if="['doctor', 'asistente'].includes(usuario.rol)" to="/app//citas" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
           <CalendarIcon class="w-5 h-5" /> Agendar Citas
         </router-link>
       </nav>
