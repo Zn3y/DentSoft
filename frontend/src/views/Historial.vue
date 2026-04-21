@@ -179,7 +179,9 @@ onMounted(() => {
     </div>
 
     <div class="mb-4">
-      <button @click="router.push(`${API_URL}/pacientes`)" class="text-blue-600 hover:underline text-sm">← Volver a Pacientes</button>
+      <button @click="router.push('/pacientes')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Volver a Pacientes
+      </button>    
     </div>
 
     <!-- Info del paciente -->
