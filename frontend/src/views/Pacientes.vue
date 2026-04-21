@@ -29,7 +29,7 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 const obtenerPacientes = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch('${API_URL}/pacientes', {
+  const res = await fetch(`${API_URL}/pacientes`, {
     headers: { 'Authorization': 'Bearer ' + token }
   })
   pacientes.value = await res.json()
@@ -39,7 +39,7 @@ const guardarPaciente = async () => {
   const token = localStorage.getItem('token')
   const url = modoEdicion.value
     ? `${API_URL}/pacientes/${pacienteEditandoId.value}`
-    : '${API_URL}/pacientes'
+    : `${API_URL}/pacientes`
 
   await fetch(url, {
     method: modoEdicion.value ? 'PUT' : 'POST',

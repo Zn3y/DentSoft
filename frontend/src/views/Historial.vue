@@ -71,7 +71,7 @@ const obtenerHistorial = async () => {
 
 const obtenerDoctores = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch('${API_URL}/usuarios/doctores', {
+  const res = await fetch(`${API_URL}/usuarios/doctores`, {
     headers: { 'Authorization': 'Bearer ' + token }
   })
   doctores.value = await res.json()
