@@ -19,11 +19,11 @@
         </router-link>
 
         <!-- Solo doctor y asistente -->
-        <router-link v-if="['doctor', 'asistente'].includes(usuario.rol)" to="/app//pacientes" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
+        <router-link v-if="['doctor', 'asistente'].includes(usuario.rol)" to="/app/pacientes" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
           <UserGroupIcon class="w-5 h-5" /> Pacientes
         </router-link>
 
-        <router-link v-if="['doctor', 'asistente'].includes(usuario.rol)" to="/app//citas" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
+        <router-link v-if="['doctor', 'asistente'].includes(usuario.rol)" to="/app/citas" class="flex items-center gap-3 hover:bg-blue-700 p-2 rounded">
           <CalendarIcon class="w-5 h-5" /> Agendar Citas
         </router-link>
       </nav>
