@@ -180,7 +180,7 @@ onMounted(() => {
             <td class="p-2 text-center space-x-1">
               <!-- Historial: doctor y asistente -->
               <button
-                v-if="['doctor', 'asistente'].includes(rolUsuario)"
+                v-if="rolUsuario === 'doctor'"
                 @click="verHistorial(paciente.id)"
                 class="bg-green-600 text-white px-2 py-1 rounded text-sm">
                 Historial
