@@ -24,7 +24,7 @@ const obtenerDoctores = async () => {
 
 const obtenerCitas = async () => {
   const token = localStorage.getItem('token')
-  const res = await fetch('${API_URL}/citas', {
+  const res = await fetch(`${API_URL}/citas`, {
     headers: { 'Authorization': 'Bearer ' + token }
   })
   citas.value = await res.json()
