@@ -175,8 +175,11 @@ onMounted(() => {
   <div>
     <!-- Header -->
     <div class="flex items-center gap-4 mb-6">
-      <button @click="router.push(`${API_URL}/pacientes`)" class="text-blue-600 hover:underline text-sm">← Volver a Pacientes</button>
       <h1 class="text-3xl font-bold">Historial Clínico</h1>
+    </div>
+
+    <div class="mb-4">
+      <button @click="router.push(`${API_URL}/pacientes`)" class="text-blue-600 hover:underline text-sm">← Volver a Pacientes</button>
     </div>
 
     <!-- Info del paciente -->
