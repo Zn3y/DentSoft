@@ -179,7 +179,7 @@ onMounted(() => {
     </div>
 
     <div class="mb-4">
-      <button @click="router.push('/pacientes')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      <button @click="router.push('/app/pacientes')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
         Volver a Pacientes
       </button>    
     </div>
