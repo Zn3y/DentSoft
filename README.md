@@ -58,16 +58,39 @@ DentSoft/
 │   ├── config/
 │   │   └── database.js
 │   ├── controllers/
+│   │   └── citasController.js
+│   │   └── dashboardController.js
+│   │   └── historialController.js
+│   │   └── pacientesControlller.js
+│   │   └── usuariosCOntroller.js
 │   ├── middlewares/
 │   │   └── auth.js
 │   ├── routes/
+│   │   └── citas.Routes.js
+│   │   └── dashboardRoutes.js
+│   │   └── historialRoutes.js
+│   │   └── pacientesRoutes.js
+│   │   └── usuariosRoutes.js
 │   └── server.js
 │
 ├── frontend/
+│   ├── public/
+│   │   └── icon.svg
+│   │   └── logo.png
 │   ├── src/
-│   ├── views/
-│   ├── components/
-│   └── main.js
+│   │   ├── routes/
+│   │   │   └── index.js
+│   │   ├── views/
+│   │   │   └── Citas.vue
+│   │   │   └── Dashboard.vue
+│   │   │   └── Historial.vue
+│   │   │   └── Home.vue
+│   │   │   └── Layout.vue
+│   │   │   └── Login.vue
+│   │   │   └── Pacientes.vue
+│   │   │   └── Usuarios.vue
+│   │   └── App.vue
+│   └── index.html
 │
 └── README.md
 ```
