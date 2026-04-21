@@ -15,6 +15,8 @@ const pacienteEditandoId = ref(null)
 const mostrarFormulario = ref(false)
 const rolUsuario = ref('')
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+
 const pacientesFiltrados = computed(() => {
   const q = busqueda.value.toLowerCase().trim()
   if (!q) return pacientes.value
@@ -25,8 +27,6 @@ const pacientesFiltrados = computed(() => {
   )
 })
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
 const obtenerPacientes = async () => {
   const token = localStorage.getItem('token')
   const res = await fetch(`${API_URL}/pacientes`, {
@@ -36,46 +36,25 @@ const obtenerPacientes = async () => {
 }
 
 const guardarPaciente = async () => {
-  // 🔴 Validación antes de enviar
-  if (
-    !nombre.value?.trim() ||
-    !apellido.value?.trim() ||
-    !documento.value?.trim() ||
-    !telefono.value?.trim() ||
-    !email.value?.trim()
-  ) {
-    alert("Todos los campos son obligatorios");
-    return;
+  if (!nombre.value?.trim() || !apellido.value?.trim() || !documento.value?.trim() || !telefono.value?.trim() || !email.value?.trim()) {
+    alert('Todos los campos son obligatorios')
+    return
   }
 
   try {
     const token = localStorage.getItem('token')
-
     const url = modoEdicion.value
       ? `${API_URL}/pacientes/${pacienteEditandoId.value}`
       : `${API_URL}/pacientes`
 
     const response = await fetch(url, {
       method: modoEdicion.value ? 'PUT' : 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      },
-      body: JSON.stringify({
-        nombre: nombre.value,
-        apellido: apellido.value,
-        documento: documento.value,
-        telefono: telefono.value,
-        email: email.value
-      })
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+      body: JSON.stringify({ nombre: nombre.value, apellido: apellido.value, documento: documento.value, telefono: telefono.value, email: email.value })
     })
 
-    // 🔴 Validar respuesta del servidor
-    if (!response.ok) {
-      throw new Error("Error al guardar el paciente");
-    }
+    if (!response.ok) throw new Error('Error al guardar el paciente')
 
-    // ✅ Solo limpiar si TODO salió bien
     nombre.value = ''
     apellido.value = ''
     documento.value = ''
@@ -83,12 +62,11 @@ const guardarPaciente = async () => {
     email.value = ''
     modoEdicion.value = false
     pacienteEditandoId.value = null
-
+    mostrarFormulario.value = false
     obtenerPacientes()
-
   } catch (error) {
     console.error(error)
-    alert("Hubo un error al guardar")
+    alert('Hubo un error al guardar')
   }
 }
 
@@ -100,8 +78,8 @@ const cargarPacienteParaEditar = (paciente) => {
   email.value = paciente.email
   pacienteEditandoId.value = paciente.id
   modoEdicion.value = true
-  window.scrollTo({ top: 0, behavior: 'smooth' })
   mostrarFormulario.value = true
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 const cancelarEdicion = () => {
@@ -126,7 +104,7 @@ const eliminarPaciente = async (id) => {
 }
 
 const verHistorial = (pacienteId) => {
-  router.push(`/historial/${pacienteId}`)
+  router.push(`/app/historial/${pacienteId}`)
 }
 
 onMounted(() => {
@@ -144,10 +122,7 @@ onMounted(() => {
     <h1 class="text-3xl font-bold mb-6">Pacientes</h1>
 
     <div class="mb-4">
-      <button 
-        @click="mostrarFormulario = !mostrarFormulario" 
-        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
+      <button @click="mostrarFormulario = !mostrarFormulario" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
         {{ mostrarFormulario ? 'Cancelar' : '+ Nuevo Paciente' }}
       </button>
     </div>
@@ -166,7 +141,7 @@ onMounted(() => {
         <button @click="guardarPaciente" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
           {{ modoEdicion ? 'Actualizar' : 'Guardar' }}
         </button>
-        <button v-if="modoEdicion" @click="cancelarEdicion" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">
+        <button @click="cancelarEdicion" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">
           Cancelar
         </button>
       </div>
@@ -174,11 +149,7 @@ onMounted(() => {
 
     <!-- Buscador -->
     <div class="mb-4">
-      <input
-        v-model="busqueda"
-        placeholder="🔍 Buscar por nombre, apellido o documento..."
-        class="p-2 border rounded w-full"
-      />
+      <input v-model="busqueda" placeholder="🔍 Buscar por nombre, apellido o documento..." class="p-2 border rounded w-full" />
     </div>
 
     <!-- Tabla -->
@@ -207,9 +178,27 @@ onMounted(() => {
             <td class="p-2">{{ paciente.telefono }}</td>
             <td class="p-2">{{ paciente.email }}</td>
             <td class="p-2 text-center space-x-1">
-              <button v-if="rolUsuario === 'doctor'" @click="verHistorial(paciente.id)" class="bg-green-600 text-white px-2 py-1 rounded text-sm">Historial</button>
-              <button v-if="rolUsuario === 'doctor'" @click="cargarPacienteParaEditar(paciente)" class="bg-yellow-500 text-white px-2 py-1 rounded text-sm">Editar</button>
-              <button v-if="rolUsuario === 'doctor'" @click="eliminarPaciente(paciente.id)"  class="bg-red-600 text-white px-2 py-1 rounded text-sm">Eliminar</button>
+              <!-- Historial: doctor y asistente -->
+              <button
+                v-if="['doctor', 'asistente'].includes(rolUsuario)"
+                @click="verHistorial(paciente.id)"
+                class="bg-green-600 text-white px-2 py-1 rounded text-sm">
+                Historial
+              </button>
+              <!-- Editar: doctor y asistente -->
+              <button
+                v-if="['doctor', 'asistente'].includes(rolUsuario)"
+                @click="cargarPacienteParaEditar(paciente)"
+                class="bg-yellow-500 text-white px-2 py-1 rounded text-sm">
+                Editar
+              </button>
+              <!-- Eliminar: solo doctor -->
+              <button
+                v-if="rolUsuario === 'doctor'"
+                @click="eliminarPaciente(paciente.id)"
+                class="bg-red-600 text-white px-2 py-1 rounded text-sm">
+                Eliminar
+              </button>
             </td>
           </tr>
         </tbody>
