@@ -36,31 +36,60 @@ const obtenerPacientes = async () => {
 }
 
 const guardarPaciente = async () => {
-  const token = localStorage.getItem('token')
-  const url = modoEdicion.value
-    ? `${API_URL}/pacientes/${pacienteEditandoId.value}`
-    : `${API_URL}/pacientes`
+  // 🔴 Validación antes de enviar
+  if (
+    !nombre.value?.trim() ||
+    !apellido.value?.trim() ||
+    !documento.value?.trim() ||
+    !telefono.value?.trim() ||
+    !email.value?.trim()
+  ) {
+    alert("Todos los campos son obligatorios");
+    return;
+  }
 
-  await fetch(url, {
-    method: modoEdicion.value ? 'PUT' : 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
-    body: JSON.stringify({
-      nombre: nombre.value,
-      apellido: apellido.value,
-      documento: documento.value,
-      telefono: telefono.value,
-      email: email.value
+  try {
+    const token = localStorage.getItem('token')
+
+    const url = modoEdicion.value
+      ? `${API_URL}/pacientes/${pacienteEditandoId.value}`
+      : `${API_URL}/pacientes`
+
+    const response = await fetch(url, {
+      method: modoEdicion.value ? 'PUT' : 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify({
+        nombre: nombre.value,
+        apellido: apellido.value,
+        documento: documento.value,
+        telefono: telefono.value,
+        email: email.value
+      })
     })
-  })
 
-  nombre.value = ''
-  apellido.value = ''
-  documento.value = ''
-  telefono.value = ''
-  email.value = ''
-  modoEdicion.value = false
-  pacienteEditandoId.value = null
-  obtenerPacientes()
+    // 🔴 Validar respuesta del servidor
+    if (!response.ok) {
+      throw new Error("Error al guardar el paciente");
+    }
+
+    // ✅ Solo limpiar si TODO salió bien
+    nombre.value = ''
+    apellido.value = ''
+    documento.value = ''
+    telefono.value = ''
+    email.value = ''
+    modoEdicion.value = false
+    pacienteEditandoId.value = null
+
+    obtenerPacientes()
+
+  } catch (error) {
+    console.error(error)
+    alert("Hubo un error al guardar")
+  }
 }
 
 const cargarPacienteParaEditar = (paciente) => {
