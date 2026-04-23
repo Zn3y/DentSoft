@@ -94,7 +94,7 @@
       <div class="grid gap-12 border-b border-slate-800 pb-12 md:grid-cols-2 lg:grid-cols-4">
         <div class="col-span-1 lg:col-span-1">
           <h3 class="mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-2xl font-bold text-transparent">🦷 DentSoft</h3>
-          <p class="font-light leading-relaxed text-slate-400">La solución CRM más completa para clínicas odontológicas. Diseñada por dentistas, para dentistas.</p>
+          <p class="font-light leading-relaxed text-slate-400">La solución CRM más completa para clínicas odontológicas. Diseñada para dentistas.</p>
         </div>
         <div v-for="group in footerLinks" :key="group.title">
           <h4 class="mb-6 font-bold text-cyan-400">{{ group.title }}</h4>
